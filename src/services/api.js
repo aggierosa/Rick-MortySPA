@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://jobinhos-api.herokuapp.com",
+  baseURL: "https://sparmapi.herokuapp.com/",
 });
 
 export default api;
