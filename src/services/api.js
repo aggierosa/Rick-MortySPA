@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const api = axios.create({
-  baseURL: "https://sparmapi.herokuapp.com/",
+export const sparmapi = axios.create({
+  baseURL: "https://sparmapi.herokuapp.com",
 });
 
-export default api;
+export const rmapi = axios.create({
+  baseURL: "https://rickandmortyapi.com/api",
+});

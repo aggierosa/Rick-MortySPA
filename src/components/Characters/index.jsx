@@ -1,8 +1,10 @@
 import CharCard from "../CharCard";
 import ModalCharCard from "../ModalCharCard";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CharactersContext } from "../../providers/favorites";
 
-const Characters = ({ characterList }) => {
+const Characters = () => {
+  const characterList = useContext(CharactersContext);
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState();
 

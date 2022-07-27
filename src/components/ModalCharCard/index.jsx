@@ -1,5 +1,7 @@
 import { UserContext } from "../../providers/user";
 import { useContext } from "react";
+import { sparmapi } from "../../services/api";
+import { toast } from "react-toastify";
 
 const ModalCharCard = ({
   setOpen,
@@ -25,8 +27,20 @@ const ModalCharCard = ({
 
   console.log(userInfo);
 
-  const handleAddFavorite = (name, user) => {
-    console.log("modalcharcard, l29");
+  const handleAddFavorite = (name, image, user) => {
+    sparmapi
+      .post(`/favorites/${user.id}`, {
+        name: name,
+        photourl: image,
+      })
+      .then((response) => {
+        console.log(response);
+        toast.success("Adicionado à lista!");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Algo deu errado :(");
+      });
     console.log(user);
   };
 
@@ -36,7 +50,7 @@ const ModalCharCard = ({
         <button onClick={closeModal}>X</button>
       </header>
       <img src={image} alt={name} />
-      <button onClick={() => handleAddFavorite(name, user)}>
+      <button onClick={() => handleAddFavorite(name, image, user)}>
         Adicionar aos favoritos
       </button>
       <h3>{id}</h3>

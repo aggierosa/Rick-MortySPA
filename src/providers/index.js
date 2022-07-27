@@ -1,5 +1,10 @@
-import { UserProvider } from "./user/index";
+import { CharactersProvider } from "./favorites";
+import { UserProvider } from "./user";
 
-const Providers = ({ children }) => <UserProvider>{children}</UserProvider>;
+const Providers = ({ children }) => (
+  <CharactersProvider>
+    <UserProvider>{children}</UserProvider>
+  </CharactersProvider>
+);
 
 export default Providers;

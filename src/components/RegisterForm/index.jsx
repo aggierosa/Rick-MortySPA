@@ -3,7 +3,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import api from "../../services/api";
+import { sparmapi } from "../../services/api";
+import { Container } from "../../styles/container";
+import { ButtonLink } from "../../styles/buttonLink.container";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,11 +33,11 @@ const Register = () => {
     const newData = {
       ...data,
     };
-    api
+    sparmapi
       .post("/users", newData)
       .then((response) => {
         toast.success("Registrado com sucesso!");
-        navigate("/users/login");
+        navigate("/");
       })
 
       .catch((_) => {
@@ -44,31 +46,26 @@ const Register = () => {
   };
 
   return (
-    <>
-      <div>
-        <div>
-          <form onSubmit={handleSubmit(submitData)}>
-            <p>Faça seu cadastro</p>
-            <input placeholder="Nome" {...register("name")} />
-            <label>Nome</label>
-            <input
-              placeholder="Senha"
-              type="password"
-              {...register("password")}
-            />
-            <label>Senha</label>
-            <input
-              placeholder="Confirmar Senha"
-              type="password"
-              {...register("password_confirm")}
-            />
-            <label>Confirmar Senha:</label>
-            <button disabled={!isValid}>Log in</button>
-            <Link to="/users/login">Já tem uma conta? Entre aqui</Link>
-          </form>
-        </div>
-      </div>
-    </>
+    <section>
+      <Container onSubmit={handleSubmit(submitData)}>
+        <h3>Faça seu cadastro</h3>
+        <label>Nome</label>
+        <input placeholder="Nome" {...register("name")} />
+        <label>Senha</label>
+        <input placeholder="Senha" type="password" {...register("password")} />
+        <label>Confirmar Senha:</label>
+        <input
+          placeholder="Confirmar Senha"
+          type="password"
+          {...register("password_confirm")}
+        />
+
+        <ButtonLink>
+          <button disabled={!isValid}>Registrar</button>
+          <Link to="/">Já tem uma conta? Entre aqui</Link>
+        </ButtonLink>
+      </Container>
+    </section>
   );
 };
 
