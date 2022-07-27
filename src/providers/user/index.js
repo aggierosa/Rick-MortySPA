@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const updateUserInfo = () => {
-    const token = JSON.parse(localStorage.getItem("@Jobinhos:token"));
+    const token = JSON.parse(localStorage.getItem("@sparm:token"));
     const { id } = userInfo;
     api
       .get(`/users/${id}`, {

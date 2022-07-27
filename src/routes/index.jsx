@@ -26,10 +26,8 @@ const Routers = () => {
           <Login user={user} setUser={setUser} auth={auth} setAuth={setAuth} />
         }
       >
-        {/* <Login user={user} setUser={setUser} auth={auth} setAuth={setAuth} /> */}
       </Route>
       <Route path="/register" element={<Register />}>
-        {/* <Register /> */}
       </Route>
       <Route
         path="/dashboard"
